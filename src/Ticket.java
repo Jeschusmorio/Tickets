@@ -1,10 +1,10 @@
 
 public abstract class Ticket {
-	String eventLocation;
-	String eventName;
-	String date;
-	double basicPrice;
-	double ticketPrice;
+	private String eventLocation;
+	private String eventName;
+	private String date;
+	private double basicPrice;
+	private double ticketPrice;
 	
 	public abstract void calculateTicketPrice();
 	
@@ -31,6 +31,12 @@ public abstract class Ticket {
 	}
 	public double getBasicPrice() {
 		return basicPrice;
+	}
+	public void setTicketPrice(double ticketPrice) {
+		this.ticketPrice = ticketPrice;
+	}
+	public double getTicketPrice() {
+		return ticketPrice;
 	}
 	
 	public void output() {

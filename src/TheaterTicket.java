@@ -20,14 +20,14 @@ public class TheaterTicket extends Ticket {
 		this("Event Location", "Event Name", "01.01.2020", 20);
 	}
 	public void calculateTicketPrice() {
-		if (eventLocation == "Landestheater") {
-			ticketPrice = basicPrice * 0.5;
+		if (getEventLocation() == "Landestheater") {
+			setTicketPrice(getBasicPrice() * 0.5);
 		}
-		else if (eventLocation == "Theater Munich") {
-			ticketPrice = basicPrice * 1.5;
+		else if (getEventLocation() == "Theater Munich") {
+			setTicketPrice(getBasicPrice() * 1.5);
 		}
 		else {
-			ticketPrice = basicPrice;
+			setTicketPrice(getBasicPrice());
 		}
 	}
 }

@@ -20,14 +20,14 @@ public class ConcertTicket extends Ticket {
 		this("Event Location", "Event Name", "01.01.2020", 100);
 	}
 	public void calculateTicketPrice() {
-		if (eventLocation == "VAZ Hafen") {
-			ticketPrice = basicPrice * 0.75;
+		if (getEventLocation() == "VAZ Hafen") {
+			setTicketPrice(getBasicPrice() * 0.75);
 		}
-		else if (eventLocation == "Zenith Kulturh.") {
-			ticketPrice = basicPrice * 1.25;
+		else if (getEventLocation() == "Zenith Kulturh.") {
+			setTicketPrice(getBasicPrice() * 1.25);
 		}
 		else {
-			ticketPrice = basicPrice;
+			setTicketPrice(getBasicPrice());
 		}
 	}
 }

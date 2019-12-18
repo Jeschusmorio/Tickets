@@ -20,14 +20,14 @@ public class SportTicket extends Ticket {
 		this("Event Location", "Event Name", "01.01.2020", 50);
 	}
 	public void calculateTicketPrice() {
-		if (eventLocation == "Tivoli Stadion") {
-			ticketPrice = basicPrice * 0.5;
+		if (getEventLocation() == "Tivoli Stadion") {
+			setTicketPrice(getBasicPrice() * 0.5);
 		}
-		else if (eventLocation == "Allianz Arena") {
-			ticketPrice = basicPrice * 1.5;
+		else if (getEventLocation() == "Allianz Arena") {
+			setTicketPrice(getBasicPrice() * 1.5);
 		}
 		else {
-			ticketPrice = basicPrice;
+			setTicketPrice(getBasicPrice());
 		}
 	}
 }
