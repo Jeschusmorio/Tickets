@@ -1,5 +1,5 @@
 
-public class Ticket {
+public abstract class Ticket {
 	
 	private String eventLocation;
 	private String eventName;
