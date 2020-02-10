@@ -18,6 +18,7 @@ public class TicketsMain {
 		tt2.output();
 		*/
 		ArrayList<Ticket> shop = new ArrayList<Ticket>();
+		/*
 		bestellen(shop, st1);
 		bestellen(shop, st2);
 		bestellen(shop, st3);
@@ -25,6 +26,7 @@ public class TicketsMain {
 		bestellen(shop, ct2);
 		bestellen(shop, tt1);
 		bestellen(shop, tt2);
+		*/
 		
 		System.out.println("Anzahl der Tickets in der Liste: "+numberOfTickets(shop));
 		/*for (int i = 0; i < shop.size(); i++) {
@@ -32,22 +34,33 @@ public class TicketsMain {
 			double ticketPrice = ticket.getTicketPrice();
 			System.out.println(ticketPrice);
 		}*/
-		System.out.println("\nGünstigstes Ticket:");
-		cheapestOrMostExpensiveTicket(shop, true);
-		System.out.println("\nTeuerstes Ticket:");
-		cheapestOrMostExpensiveTicket(shop, false);
+		try {
+			System.out.println("\nGünstigstes Ticket:");
+			cheapestOrMostExpensiveTicket(shop, true);
+			System.out.println("\nTeuerstes Ticket:");
+			cheapestOrMostExpensiveTicket(shop, false);
+		} catch (EmptyShopException e) {
+			e.printStackTrace();
+		}
 		
 		System.out.println("\nTickets für das Event 'FCW vs FCB':");
 		ArrayList<Ticket> FCWvsFCB = getTicketsOfSameEvent(shop, "FCW vs FCB");
 		System.out.println("\nAnzahl der Tickets für das Event 'FCW vs FCB': "+numberOfTickets(FCWvsFCB));
-		System.out.println("\nGünstigstes 'FCW vs FCB' Ticket:");
-		cheapestOrMostExpensiveTicket(FCWvsFCB, true);
-		System.out.println("\nTeuerstes 'FCW vs FCB' Ticket:");
-		cheapestOrMostExpensiveTicket(FCWvsFCB, false);
+		try {
+			System.out.println("\nGünstigstes 'FCW vs FCB' Ticket:");
+			cheapestOrMostExpensiveTicket(FCWvsFCB, true);
+			System.out.println("\nTeuerstes 'FCW vs FCB' Ticket:");
+			cheapestOrMostExpensiveTicket(FCWvsFCB, false);
+		} catch (EmptyShopException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	//cheap = true if cheapest Ticket is searched, false if most expensive ticket is searched
-	public static void cheapestOrMostExpensiveTicket(ArrayList<Ticket> shop, boolean cheap) { 
+	public static void cheapestOrMostExpensiveTicket(ArrayList<Ticket> shop, boolean cheap) throws EmptyShopException { 
+		if (numberOfTickets(shop) == 0) {
+			throw new EmptyShopException("Keine billigsten/teuersten Tickets in leerem Shop!");
+		}
 		Ticket searchedTicket = shop.get(0);
 		for (int i = 1; i < shop.size(); i++) { //mit 1 starten, weil wir mit einer vorherigen Karte vergleichen
 			Ticket currentTicket = shop.get(i);
